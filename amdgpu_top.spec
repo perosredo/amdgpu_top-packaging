@@ -41,12 +41,18 @@ cargo build --release --locked
 %install
 install -Dm755 target/release/amdgpu_top %{buildroot}%{_bindir}/amdgpu_top
 
-# Install desktop files
-install -Dm644 assets/amdgpu_top.desktop %{buildroot}%{_datadir}/applications/amdgpu_top.desktop
-install -Dm644 assets/amdgpu_top-tui.desktop %{buildroot}%{_datadir}/applications/amdgpu_top-tui.desktop
+# Install desktop files if they exist
+if [ -f assets/amdgpu_top.desktop ]; then
+    install -Dm644 assets/amdgpu_top.desktop %{buildroot}%{_datadir}/applications/amdgpu_top.desktop
+fi
+if [ -f assets/amdgpu_top-tui.desktop ]; then
+    install -Dm644 assets/amdgpu_top-tui.desktop %{buildroot}%{_datadir}/applications/amdgpu_top-tui.desktop
+fi
 
-# Install metainfo
-install -Dm644 assets/io.github.umio_yasuno.amdgpu_top.metainfo.xml %{buildroot}%{_datadir}/metainfo/io.github.umio_yasuno.amdgpu_top.metainfo.xml
+# Install metainfo if it exists
+if [ -f assets/io.github.umio_yasuno.amdgpu_top.metainfo.xml ]; then
+    install -Dm644 assets/io.github.umio_yasuno.amdgpu_top.metainfo.xml %{buildroot}%{_datadir}/metainfo/io.github.umio_yasuno.amdgpu_top.metainfo.xml
+fi
 
 # Install man page if it exists
 if [ -f docs/amdgpu_top.1 ]; then
@@ -55,12 +61,14 @@ fi
 
 %files
 %license LICENSE
-%doc README.md AUTHORS
+%doc README.md 
+%doc AUTHORS
 %{_bindir}/amdgpu_top
+%if 0%{?fedora}
 %{_datadir}/applications/amdgpu_top.desktop
 %{_datadir}/applications/amdgpu_top-tui.desktop
 %{_datadir}/metainfo/io.github.umio_yasuno.amdgpu_top.metainfo.xml
-%{_mandir}/man1/amdgpu_top.1*
+%endif
 
 %changelog
 * Mon Aug 19 2025 ps <ps@k8p> - 0.10.5-1
