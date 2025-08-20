@@ -50,6 +50,7 @@ fi
 %license LICENSE
 %doc README.md AUTHORS
 %{_bindir}/amdgpu_top
+%{_mandir}/man1/amdgpu_top.1*
 
 %changelog
 * Mon Aug 19 2025 ps <ps@k8p> - 0.10.5-1
