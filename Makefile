@@ -10,7 +10,7 @@ PROJECT_NAME = amdgpu_top
 # Build from GitHub releases
 copr-build:
 	copr-cli build $(PROJECT_NAME) \
-		https://github.com/Umio-Yasuno/amdgpu_top/archive/v$(VERSION).tar.gz
+		https://raw.githubusercontent.com/perosredo/amdgpu_top-packaging/main/amdgpu_top.spec
 
 # Build latest from GitHub releases  
 copr-build-latest:
