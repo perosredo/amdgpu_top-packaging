@@ -1,6 +1,6 @@
 Name:           amdgpu_top
-Version:        0.10.5
-Release:        4%{?dist}
+Version:        0.11.5
+Release:        1%{?dist}
 Summary:        Tool to displays AMDGPU usage and performance counters
 
 %global debug_package %{nil}
@@ -69,6 +69,9 @@ fi
 %{_mandir}/man1/amdgpu_top.1*
 
 %changelog
+* Tue Oct 20 2026 Petar Sredojevic <petar@sredojevic.ca> - 0.11.5-1
+- Update to upstream 0.11.5 (automated)
+
 * Tue Oct 20 2026 Petar Sredojevic <petar@sredojevic.ca> - 0.10.5-4
 - Build from upstream release tarball instead of fork snapshot
 
